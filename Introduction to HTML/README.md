@@ -472,7 +472,102 @@ Below is a visual hierarchy of paragraphs in HTML:
 3. [HTML Specification](https://html.spec.whatwg.org/)
 
 ---
-## ⭐️ 
+## ⭐️ Understanding HTML Void Elements
+
+## Introduction
+In HTML, **void elements** are a special category of elements that do not have closing tags or any content inside them. They are self-closing and typically used for embedding resources or adding metadata. Proper understanding of void elements is essential for writing clean, valid, and efficient HTML code.
+
+## What are HTML Void Elements?
+Void elements are HTML elements that do not require closing tags because they cannot have any content. They are inherently self-contained and are usually used for functionality rather than content.
+
+### Key Characteristics of Void Elements
+1. **No Closing Tag**:
+   - Void elements do not have a corresponding closing tag.
+   - Example: `<img src="image.jpg">` (not `<img></img>`).
+
+2. **Self-Contained**:
+   - Void elements cannot have child elements or content inside them.
+
+3. **Functionality-Oriented**:
+   - They are primarily used for embedding resources, adding metadata, or creating line breaks and spaces.
+
+4. **Validation Rules**:
+   - In HTML5, void elements are always written as `<elementname>` without a closing tag.
+
+## List of HTML Void Elements
+Below is the complete list of void elements:
+
+| Element      | Description                                       | Example                                |
+|--------------|---------------------------------------------------|----------------------------------------|
+| `<area>`     | Defines a clickable area inside an image map      | `<area shape="rect" coords="34,44,270,350" href="example.html">` |
+| `<base>`     | Specifies the base URL for relative URLs          | `<base href="https://example.com/">` |
+| `<br>`       | Inserts a line break                             | `<br>`                                 |
+| `<col>`      | Specifies column properties for a table           | `<col span="2" style="background-color:lightgrey;">` |
+| `<embed>`    | Embeds external content like a video or audio     | `<embed src="video.mp4">`            |
+| `<hr>`       | Creates a horizontal line                        | `<hr>`                                 |
+| `<img>`      | Embeds an image                                  | `<img src="image.jpg" alt="Description">` |
+| `<input>`    | Creates an input field                           | `<input type="text" placeholder="Enter text">` |
+| `<link>`     | Links external resources like stylesheets         | `<link rel="stylesheet" href="styles.css">` |
+| `<meta>`     | Provides metadata about the document              | `<meta charset="UTF-8">`             |
+| `<source>`   | Specifies media resources for `<video>` or `<audio>` | `<source src="audio.mp3" type="audio/mpeg">` |
+| `<track>`    | Defines text tracks for `<video>` or `<audio>`    | `<track kind="subtitles" src="subtitles.vtt">` |
+| `<wbr>`      | Suggests a line break opportunity                | `<wbr>`                                |
+
+## How to Use HTML Void Elements
+### Example 1: Embedding an Image with `<img>`
+```html
+<img src="photo.jpg" alt="A beautiful scenery">
+```
+- **Purpose**: Embeds an image.
+- **Attributes**:
+  - `src`: The image source.
+  - `alt`: Alternative text for accessibility.
+
+### Example 2: Adding a Line Break with `<br>`
+```html
+<p>This is a line of text.<br>This is a new line.</p>
+```
+- **Purpose**: Creates a line break.
+
+### Example 3: Linking a Stylesheet with `<link>`
+```html
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+```
+- **Purpose**: Links an external CSS file to the document.
+
+### Example 4: Adding Metadata with `<meta>`
+```html
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+```
+- **Purpose**: Defines metadata about the HTML document.
+
+### Example 5: Embedding a Video Source with `<source>`
+```html
+<video controls>
+    <source src="movie.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+```
+- **Purpose**: Provides video resources.
+
+## Visual Representation of Void Elements
+Here’s a diagram showing the structure of a void element:
+
+```plaintext
+<elementname attribute="value">
+|_____________|
+Tag            Attributes
+```
+
+## References
+1. [MDN Web Docs - HTML Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+2. [W3Schools - HTML Void Elements](https://www.w3schools.com/tags/default.asp)
+3. [HTML Living Standard](https://html.spec.whatwg.org/multipage/)
 
 ---
 ## ⭐️ 
