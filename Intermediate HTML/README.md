@@ -736,10 +736,3 @@ The `<img>` element is a **void element** that doesn’t require a closing tag. 
 2. [W3Schools - HTML `<img>`](https://www.w3schools.com/tags/tag_img.asp)
 3. [HTML Living Standard](https://html.spec.whatwg.org/multipage/)
 4. [Responsive Images Guide](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)
-
-
----
-## ⭐️ 
-
-
-

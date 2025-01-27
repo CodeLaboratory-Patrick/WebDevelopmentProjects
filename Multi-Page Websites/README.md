@@ -494,21 +494,3 @@ There are several hosting options, each catering to different needs and budgets.
 
 ## References & Recommended Resources
 1. [MDN Web Docs: Publishing a Website](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Publishing_your_website)
-
----
-## ⭐️
-
----
-## ⭐️ 
-
----
-## ⭐️
-
----
-## ⭐️ 
-
-
-
-
-
-
