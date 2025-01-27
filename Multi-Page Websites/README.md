@@ -116,7 +116,6 @@ my-website/
 | `scripts/app.js`     | `assets/images/header.jpg` | `/my-website/assets/images/header.jpg` | `../assets/images/header.jpg` |
 | `assets/pdfs/guide.pdf` | `index.html`       | `/my-website/index.html`          | `../../index.html`     |
 
-
 ## References & Recommended Resources
 1. [MDN Web Docs: File Paths](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files)
 2. [W3Schools: HTML File Paths](https://www.w3schools.com/html/html_filepaths.asp)
