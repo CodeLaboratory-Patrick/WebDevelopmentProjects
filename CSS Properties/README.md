@@ -599,7 +599,194 @@ p {
 3. [Google Fonts](https://fonts.google.com/) - Extensive library of free fonts.
 
 ---
-## ⭐️
+## ⭐️ Understanding CSS Text Align
+
+## Introduction
+In web development, **text alignment** is crucial for creating a clear, easy-to-read layout. With the CSS `text-align` property, developers can control how inline content (like text and inline-block elements) is aligned horizontally within a container. Proper alignment can enhance both the aesthetics and the usability of a page.
+
+## What is `text-align`?
+`text-align` is a **CSS property** used to set the horizontal alignment of inline-level elements within a block-level parent. By default, text in a block container is aligned to the left in left-to-right (LTR) languages.
+
+### Key Characteristics
+- Affects inline content (text, inline-blocks, inline images) within a parent container.
+- Common alignment values: `left`, `right`, `center`, `justify`, etc.
+- Language direction influences default alignment (e.g., right-to-left languages).
+
+## Syntax and Common Values
+
+```css
+selector {
+    text-align: value;
+}
+```
+
+### Possible Values
+
+| Value     | Description                                                     |
+|-----------|-----------------------------------------------------------------|
+| `left`    | Aligns text to the left (default in LTR languages)             |
+| `right`   | Aligns text to the right                                       |
+| `center`  | Centers text (useful for headings or special sections)         |
+| `justify` | Stretches lines so that each line has equal width, except the last |
+| `start`   | Aligns text to the start edge (left for LTR, right for RTL)    |
+| `end`     | Aligns text to the end edge (right for LTR, left for RTL)      |
+
+**Note**: The `start` and `end` values are part of the CSS Writing Modes specification, offering more flexibility with different language directions.
+
+## Basic Examples
+
+### 1. Left Alignment
+```css
+p {
+  text-align: left; /* default for LTR languages */
+}
+```
+
+### 2. Right Alignment
+```css
+blockquote {
+  text-align: right;
+}
+```
+
+### 3. Center Alignment
+```css
+h1 {
+  text-align: center;
+}
+```
+
+### 4. Justify Alignment
+```css
+.article {
+  text-align: justify;
+}
+```
+Text in a justified paragraph will stretch to the full width of the container, except for the last line.
+
+## Diagram: How `text-align` Works
+```plaintext
++----------------------------+
+| text-align: left (LTR)     |
+|                            |
+| The quick brown fox jumps  |
+| over the lazy dog.         |
++----------------------------+
+
++----------------------------+
+| text-align: center         |
+|                            |
+|   The quick brown fox      |
+|   jumps over the lazy dog. |
++----------------------------+
+
++----------------------------+
+| text-align: justify        |
+|                            |
+| The quick brown fox jumps  |
+| over the lazy dog. The     |
+| lines stretch to fill      |
+| the container.             |
++----------------------------+
+```
+
+## Special Considerations
+1. **Inline vs Block Elements**
+   - `text-align` only applies to **inline** content within a **block-level** container.
+2. **Empty Elements**
+   - An element must have inline content for `text-align` to be noticeable.
+3. **Float or Position**
+   - Alignment with floats or positioning is handled differently. `text-align` does not affect floated elements.
+4. **Language Direction**
+   - In right-to-left (RTL) languages, the default alignment is `right`.
+
+## `text-align: justify` Tips
+- Often used in news articles or text-heavy layouts.
+- Can lead to irregular spaces between words, especially in narrower containers.
+- Hyphenation can improve justified text in large blocks.
+
+### Example with Hyphenation
+```css
+.text-block {
+  text-align: justify;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+```
+
+---
+
+## Alignment in Responsive Design
+- Use `text-align: center;` for headers or small containers on mobile.
+- Combine with media queries to adjust alignment for different screen sizes.
+
+```css
+@media (max-width: 600px) {
+  .responsive-heading {
+    text-align: center;
+  }
+}
+```
+
+## Comparison Table: `text-align` Values
+
+| Value     | Typical Use Case                            | Pros                               | Cons                                   |
+|-----------|---------------------------------------------|-------------------------------------|----------------------------------------|
+| `left`    | Default for LTR text                        | Familiar look                        | Not suitable for right-aligned layouts |
+| `right`   | LTR content for emphasis or stylized blocks | Good for numbers, special sections  | Unusual for standard paragraphs in LTR  |
+| `center`  | Headlines, subheadings, calls to action     | Visually distinctive                | Harder to read in large blocks         |
+| `justify` | Newspaper-style layouts, formal documents   | Professional, neat look             | May result in awkward word spacing     |
+| `start`   | Bidirectional text support (LTR, RTL)       | Auto-adapts to language direction   | Limited browser support (older browsers) |
+| `end`     | Bidirectional text support (LTR, RTL)       | Flexibility for multi-lingual sites | Same as above                          |
+
+## Example Code Snippet
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Text Align Example</title>
+  <style>
+    header {
+      text-align: center;
+    }
+
+    .quote {
+      text-align: right;
+      font-style: italic;
+    }
+
+    .article {
+      text-align: justify;
+      width: 80%;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Page</h1>
+  </header>
+
+  <p class="quote">
+    "This is a right-aligned quote..."
+  </p>
+
+  <div class="article">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+    </p>
+  </div>
+</body>
+</html>
+```
+
+## References & Recommended Resources
+1. [MDN Web Docs - text-align](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align)
+2. [W3Schools - CSS text-align Property](https://www.w3schools.com/css/css_text.asp)
+3. [CSS-Tricks - Text Align](https://css-tricks.com/almanac/properties/t/text-align/)
 
 ---
 ## ⭐️ 
