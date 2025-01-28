@@ -363,6 +363,245 @@ Many color properties can be used together to create layered, visually pleasing 
 5. [Color Hunt](https://colorhunt.co/)
 
 ---
+## ⭐️ Understanding CSS Font Properties
+
+## Introduction
+CSS font properties allow developers to control the appearance of text on a webpage, including its typeface, size, style, weight, and more. By mastering these properties, you can ensure consistent, readable, and visually appealing typography that aligns with your website’s brand or design goals.
+
+## Common CSS Font Properties
+
+### Core Font Properties
+| Property          | Description                                                                 | Values/Examples                                                                 |
+|-------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| `font-family`     | Specifies the typeface (e.g., Arial, Times New Roman).                      | `font-family: "Helvetica Neue", Arial, sans-serif;` (fallback fonts included)   |
+| `font-size`       | Sets the text size.                                                         | `16px`, `1.2em`, `2rem`, `150%`                                                 |
+| `font-weight`     | Defines boldness (e.g., normal, bold, or numeric values).                   | `normal`, `bold`, `600`, `lighter`                                              |
+| `font-style`      | Specifies italic or oblique text.                                           | `normal`, `italic`, `oblique`                                                   |
+| `font-variant`    | Controls small-caps or alternate glyphs.                                    | `normal`, `small-caps`, `unicase`                                               |
+| `line-height`     | Sets the vertical spacing between lines of text.                            | `1.5`, `24px`, `normal`                                                         |
+| `font` (shorthand)| Combines multiple font properties in one declaration.                       | `font: italic small-caps bold 16px/1.5 "Arial", sans-serif;`                    |
+
+### Font Units
+| Unit  | Description                                                                 | Use Case                          |
+|-------|-----------------------------------------------------------------------------|-----------------------------------|
+| `px`  | Absolute pixels (1px = 1/96th of an inch).                                  | Fixed-size elements.              |
+| `em`  | Relative to the parent’s font size (e.g., `1.5em` = 150% of parent size).   | Scalable typography.              |
+| `rem` | Relative to the root (`<html>`) font size.                                  | Consistent scaling across the UI. |
+| `%`   | Percentage of the parent’s font size.                                       | Responsive designs.               |
+
+### Key Features
+- **Fallback Fonts**: Use commas in `font-family` to specify alternatives (e.g., `Arial, sans-serif`).
+- **Web Fonts**: Import custom fonts via `@font-face` or services like Google Fonts.
+- **Accessibility**: Use relative units (`em`, `rem`) for resizable text and ensure sufficient contrast.
+
+### 1. `font-family`
+- Specifies the typeface for an element.
+- Typically lists **fallback** fonts in case the preferred font is unavailable.
+
+```css
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+}
+```
+
+**Usage Note**: Always include generic families (e.g., `serif`, `sans-serif`, `monospace`) for broader compatibility.
+
+### 2. `font-size`
+- Defines the size of text.
+- Common units include `px`, `em`, `rem`, `%`.
+
+```css
+p {
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 2em; /* 2 times the current font size */
+}
+```
+
+### 3. `font-style`
+- Controls **italic** or **normal** text.
+
+```css
+.italic-text {
+  font-style: italic;
+}
+```
+
+### 4. `font-weight`
+- Sets the **thickness** or **boldness** of the font.
+- Can be keywords (`normal`, `bold`) or numeric values (100-900).
+
+```css
+strong {
+  font-weight: bold;
+}
+
+.light-text {
+  font-weight: 300;
+}
+```
+
+### 5. `font-variant`
+- Alters text for features like **small-caps**.
+
+```css
+small {
+  font-variant: small-caps;
+}
+```
+
+### 6. `line-height`
+- Sets the **height** between lines of text.
+- Can use unitless number, percentages, or fixed units.
+
+```css
+p {
+  line-height: 1.5;
+}
+```
+
+### 7. `letter-spacing` (Tracking)
+- Adjusts **spacing between characters**.
+
+```css
+.spaced {
+  letter-spacing: 0.05em;
+}
+```
+
+### 8. `word-spacing`
+- Modifies **spacing between words**.
+
+```css
+.wide-word {
+  word-spacing: 0.1em;
+}
+```
+
+### 9. `text-transform`
+- Changes the **case** of text (uppercase, lowercase, capitalize).
+
+```css
+.uppercase {
+  text-transform: uppercase;
+}
+```
+
+---
+
+## The `font` Shorthand Property
+CSS provides a **shorthand** to set multiple font properties in a single declaration.
+
+**Syntax**:
+```css
+font: font-style font-variant font-weight font-size/line-height font-family;
+```
+
+**Example**:
+```css
+.heading {
+  font: italic small-caps bold 1.5em/1.2 "Helvetica Neue", sans-serif;
+}
+```
+
+**Rules**:
+1. **Order Matters**: Must follow the syntax sequence.
+2. **Required**: `font-size` and `font-family` must be declared.
+3. **Optional**: Others are optional but if omitted, they revert to default.
+
+## Using Custom Fonts
+### Web Safe Fonts
+- Preinstalled on most systems (e.g., Arial, Times New Roman).
+- **Pros**: Guaranteed availability.
+- **Cons**: Limited design choices.
+
+### @font-face
+- Allows you to **embed custom fonts**.
+- Must host font files (`.woff`, `.woff2`, `.ttf`, etc.) on your server or reference an external source.
+
+```css
+@font-face {
+  font-family: "MyCustomFont";
+  src: url("fonts/MyCustomFont.woff2") format("woff2"),
+       url("fonts/MyCustomFont.woff") format("woff");
+}
+
+.body-text {
+  font-family: "MyCustomFont", sans-serif;
+}
+```
+
+### Google Fonts
+- A popular service providing free, open-source fonts.
+- Simply import via `<link>` or `@import`.
+
+```html
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" >
+```
+
+```css
+body {
+  font-family: 'Roboto', sans-serif;
+}
+```
+
+## Diagram: CSS Font Properties Hierarchy
+```plaintext
+font-family > font-size > line-height > font-weight
+|                |             |          |
+|                |             |          |-- numeric (100-900) or keywords (bold, normal)
+|                |             |
+|                |             |-- sets spacing between lines
+|                |
+|                |-- sets text size in px, em, rem, %
+|
+|-- sets typeface (Arial, Times, custom)
+```
+
+### Font Units Comparison
+| Unit  | Scalability | Use Case                  | Example            |
+|-------|-------------|---------------------------|--------------------|
+| `px`  | Fixed       | Fixed layouts             | `font-size: 16px;` |
+| `em`  | Relative    | Nested elements           | `font-size: 1.2em;`|
+| `rem` | Relative    | Root-based consistency    | `font-size: 1.5rem;`|
+
+## Example of Typography Setup
+```css
+/* Define custom font via @font-face */
+@font-face {
+  font-family: "OpenSans";
+  src: url("fonts/OpenSans-Regular.woff2") format("woff2"),
+       url("fonts/OpenSans-Regular.woff") format("woff");
+}
+
+body {
+  font-family: "OpenSans", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+h1, h2, h3 {
+  font-weight: 700; /* Bold headings */
+  margin: 1rem 0;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+```
+
+## References & Recommended Resources
+1. [MDN Web Docs - Font Property](https://developer.mozilla.org/en-US/docs/Web/CSS/font)
+2. [W3Schools - CSS Fonts](https://www.w3schools.com/css/css_font.asp)
+3. [Google Fonts](https://fonts.google.com/) - Extensive library of free fonts.
+
+---
+## ⭐️
+
+---
 ## ⭐️ 
 
 ---
