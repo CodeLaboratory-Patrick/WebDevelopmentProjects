@@ -821,7 +821,6 @@ Most browsers (Chrome, Firefox, Safari, Edge) include robust developer tools. Wh
 - **Layout Panel**: Dedicated controls for CSS Grid and Flexbox debugging.
 
 ## How to Use CSS Inspection
-
 1. **Open DevTools**
    - Typically, right-click an element → “Inspect” or press `F12` or `Ctrl+Shift+I` (Windows) / `Cmd+Opt+I` (Mac).
 
@@ -877,7 +876,6 @@ Most browsers (Chrome, Firefox, Safari, Edge) include robust developer tools. Wh
   ```
 
 ## Common Features
-
 | Feature                  | Description                                                                | Example                                                         |
 |--------------------------|----------------------------------------------------------------------------|-----------------------------------------------------------------|
 | **Element Inspector**    | Highlights element in the page upon hover                                 | Quickly locate a `<nav>` to see what styles are applied         |
