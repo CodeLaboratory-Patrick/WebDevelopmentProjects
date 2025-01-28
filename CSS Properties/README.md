@@ -362,7 +362,6 @@ Many color properties can be used together to create layered, visually pleasing 
 4. [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
 5. [Color Hunt](https://colorhunt.co/)
 
-
 ---
 ## ⭐️ 
 
