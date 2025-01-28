@@ -19,6 +19,24 @@
 - **Selector-Based**: Target elements using selectors (e.g., element, class, ID) for flexible styling.
 - **Responsive Design**: Media queries enable different styles for various screen sizes.
 
+### Core Features
+| Feature                | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| **Separation of Concerns** | Decouples content (HTML) from presentation (CSS).                       |
+| **Cascading Nature**   | Styles combine from multiple sources (user, author, browser) with priority rules. |
+| **Responsive Design**  | Adapts layouts to screen sizes using media queries (e.g., `@media (max-width: 600px)`). |
+| **Modularity**         | Reusable styles via classes, variables, and external files.                |
+| **Browser Compatibility** | Standardized rules (via W3C) ensure consistent rendering across browsers. |
+
+### CSS Selectors
+| Selector Type      | Example           | Targets                                  |
+|--------------------|-------------------|------------------------------------------|
+| **Element**        | `p`               | All `<p>` elements.                      |
+| **Class**          | `.header`         | Elements with `class="header"`.          |
+| **ID**             | `#main-content`   | Element with `id="main-content"`.        |
+| **Attribute**      | `[type="text"]`   | Elements with `type="text"`.             |
+| **Pseudo-class**   | `a:hover`         | Links on mouse hover.                    |
+
 ## Why Do We Need CSS?
 1. **Enhanced Presentation**
    - Allows precise control over design elements like color, typography, and layout.
@@ -104,6 +122,13 @@
 | ID Selector             | `#header`   | 100                        |
 | Class Selector          | `.container`| 10                         |
 | Element Selector        | `div`       | 1                          |
+
+### Integration Methods
+| Method          | Example                      | Use Case                                |
+|-----------------|------------------------------|-----------------------------------------|
+| **Inline**      | `<p style="color: red;">`    | Rare, for quick overrides.              |
+| **Internal**    | `<style> p { color: red; }`  | Small projects or single-page apps.     |
+| **External**    | `<link href="styles.css">`   | Best practice for scalability.          |
 
 ## Diagram: Basic CSS Flow
 ```plaintext
