@@ -404,12 +404,3 @@ The **specificity** of a selector determines which rule applies if multiple rule
 1. [MDN Web Docs - CSS Selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)
 2. [W3Schools - CSS Selectors](https://www.w3schools.com/css/css_selectors.asp)
 3. [CSS-Tricks - Selector Reference](https://css-tricks.com/almanac/selectors/)
-
----
-## ⭐️ 
-
----
-## ⭐️
-
----
-## ⭐️ 
