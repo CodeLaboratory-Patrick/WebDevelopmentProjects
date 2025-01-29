@@ -221,7 +221,162 @@ Inline Styles → IDs → Classes/Attributes → Elements → Browser Defaults
 3. [CSS-Tricks - Specifics on CSS Specificity](https://css-tricks.com/specifics-on-css-specificity/)
 
 ---
-## ⭐️ 
+## ⭐️ Combining CSS Selectors in Web Development
+
+## Introduction
+In CSS, selectors define which elements should receive a set of style rules. While single selectors (like `.class` or `#id`) can be powerful, **combining selectors** unlocks more complex targeting. By mixing **descendants, children, siblings, and attribute** selectors, you can apply styling precisely without scattering extraneous classes or resorting to overly specific IDs.
+
+## Why Combine Selectors?
+1. **Fine-Grained Control**: Target elements within specific contexts.
+2. **Avoid Overusing Classes**: Rely on the document structure to style elements.
+3. **Improve Maintainability**: Organized rules with fewer class declarations.
+4. **Prevent Conflicts**: Ensures certain styles only apply in particular nesting or sibling scenarios.
+
+## Common Combinators
+### 1. Descendant Combinator (` `)
+- Represented by a **space** between selectors.
+- Selects elements that are **descendants** (at any depth) of another element.
+
+```css
+section p {
+  color: blue;
+}
+```
+Here, **all `<p>` elements** inside a `<section>` will be blue, regardless of nesting depth.
+
+### 2. Child Combinator (`>`)
+- Selects **direct children** of an element.
+
+```css
+ul > li {
+  list-style-type: none;
+}
+```
+Only **immediate `<li>` children** of a `<ul>` are styled, ignoring nested lists.
+
+### 3. Adjacent Sibling Combinator (`+`)
+- Targets an element that **immediately follows** a sibling.
+
+```css
+h2 + p {
+  margin-top: 0;
+}
+```
+Every `<p>` that appears **right after** an `<h2>` will have no top margin.
+
+### 4. General Sibling Combinator (`~`)
+- Selects elements that share a parent and appear **after** a specified sibling (not necessarily immediately).
+
+```css
+h2 ~ p {
+  color: gray;
+}
+```
+All `<p>` elements **after** an `<h2>` in the same parent are styled.
+
+## Combining Class, ID, and Type Selectors
+1. **Class + Type Selector**
+   ```css
+   p.highlight {
+     background-color: yellow;
+   }
+   ```
+   This targets `<p>` elements **with the `highlight` class** only.
+
+2. **ID + Class**
+   ```css
+   #container .box {
+     border: 2px solid #ccc;
+   }
+   ```
+   Finds elements **with class `box`** that exist inside an element **with the ID `container`**.
+
+3. **Multiple Classes**
+   ```css
+   .card.info {
+     color: blue;
+   }
+   ```
+   Targets elements that have **both `card` and `info` classes** (e.g., `<div class="card info">`).
+
+## Attribute Selectors in Combination
+
+### Examples
+```css
+/* Links that start with "https" within the .external class */
+.external a[href^="https"] {
+  color: red;
+}
+
+/* Inputs inside a form with type="email" */
+form input[type="email"] {
+  border: 1px solid green;
+}
+```
+By combining **class selectors** with **attribute selectors**, you can style elements only in certain contexts.
+
+## Pseudo-Class Combinations
+
+1. **Hover + Descendant**
+   ```css
+   nav ul li:hover a {
+     text-decoration: underline;
+   }
+   ```
+   When a user hovers over an `<li>` in a navigation, its `<a>` child is underlined.
+
+2. **Focus Within a Form**
+   ```css
+   form input:focus {
+     outline: 2px solid #007bff;
+   }
+   ```
+
+3. **Pseudo-Class + Sibling**
+   ```css
+   .tab.active + .tab {
+     border-left: none;
+   }
+   ```
+   If an element with `.tab.active` is followed by another `.tab`, remove the left border.
+
+## Diagram: Combining Selectors
+```plaintext
+body > main.content div.box.highlight + p.info {
+  color: #333;
+}
+
+Hierarchy of specificity:
+ body > main.content -> direct child main with class="content"
+ main.content div.box.highlight -> a descendant <div> with classes .box and .highlight
+ box.highlight + p.info -> the <p> with class .info that immediately follows .box.highlight
+```
+
+## Performance Considerations
+- Overly complex selectors (deep descendant combinators, multiple nesting) can slow rendering slightly.
+- However, modern browsers are optimized, so focus on **maintainability** over micro-optimizations.
+
+## Comparison Table: Combinators
+| Combinator  | Symbol | Match Type                         | Example     |
+|-------------|--------|------------------------------------|-------------|
+| Descendant  | (space)| Any depth inside parent            | `div p`     |
+| Child       | `>`    | Direct child of parent             | `ul > li`   |
+| Adjacent    | `+`    | Immediately following sibling      | `h2 + p`    |
+| General     | `~`    | Any sibling after target in parent | `h2 ~ p`    |
+
+## Specificity Hierarchy Table
+| Selector Type          | Example          | Specificity Score (A-B-C-D) |
+|------------------------|------------------|-----------------------------|
+| Inline Style           | `style="..."`    | 1-0-0-0                     |
+| ID                     | `#header`        | 0-1-0-0                     |
+| Class/Attribute/Pseudo | `.active`        | 0-0-1-0                     |
+| Element/Pseudo-element | `div`            | 0-0-0-1                     |
+
+## References & Recommended Resources
+1. [MDN Web Docs - CSS Selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)
+2. [CSS-Tricks - Selectors](https://css-tricks.com/almanac/selectors/)
+3. [W3Schools - CSS Combinators](https://www.w3schools.com/css/css_combinators.asp)
+4. [HTML Living Standard](https://html.spec.whatwg.org/)
 
 ---
 ## ⭐️ 
