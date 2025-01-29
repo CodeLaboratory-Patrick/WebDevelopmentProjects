@@ -1,4 +1,4 @@
-# CSS Properties
+# Intermediate CSS
 
 ---
 ## ⭐️ Understanding CSS Specificity and Inheritance
@@ -596,9 +596,3 @@ body {
 2. [CSS-Tricks - Absolute, Relative, Fixed Positioning](https://css-tricks.com/absolute-relative-fixed-positioining-how-do-they-differ/)
 3. [W3Schools - CSS Layout - The position Property](https://www.w3schools.com/css/css_positioning.asp)
 4. [Can I Use - Sticky Positioning](https://caniuse.com/css-sticky)
-
----
-## ⭐️ 
-
----
-## ⭐️ 
