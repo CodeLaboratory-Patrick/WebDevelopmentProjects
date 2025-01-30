@@ -896,9 +896,3 @@ body {
 2. [CSS-Tricks - Media Queries](https://css-tricks.com/css-media-queries/)
 3. [W3Schools - CSS Media Queries](https://www.w3schools.com/css/css_rwd_mediaqueries.asp)
 4. [caniuse.com - Browser Support](https://caniuse.com/)
-
----
-## ⭐️ 
-
----
-## ⭐️ 
