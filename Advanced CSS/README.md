@@ -662,7 +662,240 @@ In this example:
 5. [Can I Use - Browser Support](https://caniuse.com/)
 
 ---
-## ⭐️ 
+## ⭐️ Understanding CSS Media Queries
+
+## Introduction
+**CSS Media Queries** are a foundational tool in responsive web design. They allow developers to apply different styles based on a device’s characteristics, such as screen width, height, resolution, or orientation. By using media queries, a website can adapt its layout and design for various devices—desktops, tablets, phones—ensuring better usability and aesthetics.
+
+## What Are Media Queries?
+Media queries are conditional rules in CSS that test a device’s features. When the conditions are met, the styles within the query take effect. In other words, they apply specific CSS only if certain **media features** match.
+
+### Syntax Overview
+```css
+@media (feature: value) {
+  /* CSS rules here apply only if the feature matches the given value */
+}
+```
+
+For example, `@media (max-width: 600px)` targets screens with a width **up to** 600px.
+
+## Key Characteristics
+1. **Conditional Styling**: Applies different CSS rules depending on device features.
+2. **Multiple Conditions**: Combine features using logical operators (`and`, `not`, `or` via commas).
+3. **Mobile-First**: Often used starting with base (mobile) styles, then additional queries for larger screens.
+4. **Wide Range of Features**: `width`, `height`, `orientation`, `aspect-ratio`, `resolution`, etc.
+
+### Media Features
+| Feature          | Description                  | Example                     |
+|------------------|------------------------------|-----------------------------|
+| `width`          | Viewport width               | `(min-width: 768px)`        |
+| `orientation`    | Portrait/landscape mode      | `(orientation: landscape)`  |
+| `resolution`     | Device pixel density         | `(min-resolution: 2dppx)`   |
+| `hover`          | Hover capability             | `(hover: hover)`            |
+| `prefers-color-scheme` | Dark/light mode preference | `(prefers-color-scheme: dark)` |
+
+### Logical Operators
+| Operator   | Description                     | Example                                   |
+|------------|---------------------------------|-------------------------------------------|
+| `and`      | Combines conditions             | `@media (min-width: 600px) and (max-width: 1200px)` |
+| `,`        | Logical OR                      | `@media (max-width: 600px), (print)`      |
+| `not`      | Negates the query               | `@media not screen and (color)`           |
+| `only`     | Targets modern browsers         | `@media only screen and (min-width: 768px)` |
+
+## Basic Examples
+### Example 1: `max-width` Breakpoint
+```css
+/* Styles for screens up to 600px wide */
+@media (max-width: 600px) {
+  body {
+    background-color: #fafafa;
+  }
+  .container {
+    padding: 10px;
+  }
+}
+```
+
+### Example 2: `min-width` Breakpoint
+```css
+/* Styles for screens 768px or wider */
+@media (min-width: 768px) {
+  .sidebar {
+    float: left;
+    width: 25%;
+  }
+  .main-content {
+    width: 75%;
+    float: left;
+  }
+}
+```
+
+### Example 3: Combining Features
+```css
+@media (min-width: 768px) and (orientation: landscape) {
+  .landscape-layout {
+    display: flex;
+  }
+}
+```
+Applies styles only if the viewport is **at least 768px wide** and the device is in **landscape** orientation.
+
+## Logical Operators
+1. **and**: Both conditions must be true.
+2. **not**: Negates a media query.
+3. **,** (comma): Functions like **OR**—separates multiple media queries.
+
+**Example**:
+```css
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* styles for tablets between 768px and 1024px wide */
+}
+
+@media screen and (max-width: 600px), screen and (max-height: 600px) {
+  /* if either width <= 600px OR height <= 600px */
+}
+```
+
+## Media Types vs. Media Features
+| Media Type | Description                                          |
+|------------|------------------------------------------------------|
+| `screen`   | Typical displays (desktop, tablet, phone)           |
+| `print`    | For printed materials or print preview              |
+| `speech`   | Screenreaders reading out loud                      |
+
+**Media Features** focus on device specifics such as **width**, **height**, **orientation**, **resolution**, etc.
+
+## Diagram: Media Query Flow
+```plaintext
+                     +----------+
+    Device Width --->| Condition|---> If true, apply media query rules
+    Orientation   --->|   Check  |
+                     +----------+
+
+```
+
+## Common Breakpoint Patterns
+| Breakpoint     | Typical Use Case                            |
+|----------------|---------------------------------------------|
+| 0–600px        | Small phones                                |
+| 600–768px      | Larger phones, smaller tablets              |
+| 768–1024px     | Tablets, small laptops                      |
+| 1024px+        | Desktops, large screens                     |
+
+**Note**: There’s no universal standard for breakpoints. Tailor them to your design.
+
+## Example: Mobile-First Approach
+```css
+/* Base mobile styles */
+body {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Tablet screens and up */
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+/* Desktop screens and up */
+@media (min-width: 1024px) {
+  body {
+    font-size: 20px;
+  }
+}
+```
+
+## Potential Pitfalls
+1. **Too Many Breakpoints**: Creates complex code that’s hard to maintain.
+2. **Ignoring Device Capabilities**: Overly focusing on width instead of orientation, resolution, etc.
+3. **Browser Incompatibilities**: Older browsers have partial support for certain features (check [caniuse.com](https://caniuse.com/)).
+
+## Example of Combining Media Queries for a Responsive Layout
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Queries Demo</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+
+  .sidebar {
+    flex: 0 0 100%;
+    background-color: #f4f4f4;
+    padding: 1rem;
+  }
+
+  .main {
+    flex: 0 0 100%;
+    padding: 1rem;
+  }
+
+  /* Tablet up */
+  @media (min-width: 768px) {
+    .sidebar {
+      flex: 0 0 30%;
+    }
+    .main {
+      flex: 0 0 70%;
+    }
+  }
+
+  /* Desktop up */
+  @media (min-width: 1024px) {
+    .sidebar {
+      flex: 0 0 25%;
+    }
+    .main {
+      flex: 0 0 75%;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Responsive Demo with Media Queries</h1>
+  </header>
+
+  <div class="container">
+    <div class="sidebar">
+      <h2>Sidebar</h2>
+      <p>This section changes width based on breakpoints.</p>
+    </div>
+    <div class="main">
+      <h2>Main Content</h2>
+      <p>Lorem ipsum dolor sit amet...</p>
+    </div>
+  </div>
+</body>
+</html>
+```
+
+## References & Recommended Resources
+1. [MDN Web Docs - Using Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
+2. [CSS-Tricks - Media Queries](https://css-tricks.com/css-media-queries/)
+3. [W3Schools - CSS Media Queries](https://www.w3schools.com/css/css_rwd_mediaqueries.asp)
+4. [caniuse.com - Browser Support](https://caniuse.com/)
 
 ---
 ## ⭐️ 
