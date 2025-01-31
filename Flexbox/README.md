@@ -460,6 +460,8 @@ Example of `direction`:
 2. [CSS-Tricks - A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 3. [W3Schools - Flex Direction](https://www.w3schools.com/cssref/css3_pr_flex-direction.asp)
 4. [Can I Use - Flexbox Support](https://caniuse.com/flexbox)
+5. [Universal selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors)
+6. [Combinators](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Combinators)
 
 ---
 ## ⭐️ 
