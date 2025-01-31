@@ -698,9 +698,178 @@ Align-Items = center => vertically aligned
 1. [MDN Web Docs - CSS Flexible Box Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout)
 2. [CSS-Tricks - Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 3. [W3Schools - CSS Flexbox](https://www.w3schools.com/css/css3_flexbox.asp)
-
+4. [Flex Layout Testing](https://appbrewery.github.io/flex-layout/)
 ---
-## ⭐️ 
+## ⭐️ Understanding CSS Flex Sizing
+## Introduction
+In Flexbox, sizing refers to how elements grow or shrink to fill available space within a flex container. The core mechanisms revolve around **`flex-basis`, `flex-grow`, and `flex-shrink`**, combined in the shorthand property `flex`. By mastering flex sizing, you can create adaptive layouts that behave predictably across varying screen sizes and content requirements.
 
----
-## ⭐️ 
+## Why Flex Sizing Matters
+1. **Responsive Layouts**: Items can adapt to available space without fixed widths.
+2. **Eliminate Overflow**: Controlling how items shrink prevents accidental overflow.
+3. **Design Consistency**: Ensures elements remain proportionate, even with dynamic content.
+4. **Simplify Maintenance**: Less reliance on complicated manual calculations.
+
+## Flex Sizing Properties
+### 1. `flex-basis`
+- Defines the **initial main size** of a flex item.
+- Can be in `px`, `%`, `rem`, or `auto`.
+- If set to `auto`, the item’s intrinsic size or content size is used.
+
+| Value          | Behavior                          |
+|----------------|-----------------------------------|
+| `auto` (default)| Uses item's `width`/`height`     |
+| `px`, `%`, `em`| Explicit fixed size              |
+| `content`      | Sizes based on item's content    |
+
+```css
+.item {
+  flex-basis: 200px; /* attempts to be 200px wide in a row layout */
+}
+```
+
+### 2. `flex-grow`
+- Determines **how much** a flex item **can grow** relative to other flex items **when extra space is available**.
+- Default is `0` (no growth).
+- A higher number means the item grows more.
+
+```css
+.item {
+  flex-grow: 1; /* expands if container has extra space */
+}
+```
+
+**Example**:
+- If three items have `flex-grow: 1`, they each take an equal share of leftover space.
+- If one item has `flex-grow: 2` and others have `flex-grow: 1`, the item with `2` gets double the leftover space.
+
+### 3. `flex-shrink`
+- Defines **how much** a flex item **shrinks** when space is limited.
+- Default is `1` (items shrink as needed).
+- A value of `0` prevents shrinking.
+
+**Calculation**:
+```
+Negative Space = Container Size - Sum of flex-basis values
+Shrink Factor = (flex-shrink × flex-basis) / Total Shrink Factors
+```
+
+```css
+.item {
+  flex-shrink: 0; /* item won't shrink below its flex-basis */
+}
+```
+
+**Example**:
+- If an item has `flex-shrink: 0`, it stays at `flex-basis` size, potentially causing overflow.
+- Setting a higher shrink value compared to siblings means it shrinks more aggressively.
+
+### 4. `flex` (Shorthand)
+Combines `flex-grow`, `flex-shrink`, and `flex-basis` in a single declaration.
+
+```css
+.item {
+  flex: <grow> <shrink> <basis>;
+}
+
+/* Example */
+.item {
+  flex: 1 1 200px; /* can grow, can shrink, starts at 200px wide */
+}
+```
+
+| Shorthand   | Components                                         |
+|-------------|-----------------------------------------------------|
+| `1 1 auto`  | `flex-grow: 1; flex-shrink: 1; flex-basis: auto;`  |
+| `0 0 auto`  | No grow, no shrink, auto basis                     |
+| `1 0 100px` | Grows, no shrink, starts at 100px                   |
+
+## How Sizing Works Together
+When **extra space** exists in the container:
+- Items compare their `flex-grow` values to decide how much to expand.
+
+When **not enough space** is available:
+- Items compare their `flex-shrink` values to decide how much to shrink.
+
+**`flex-basis`** sets an initial or ideal size from which these calculations begin.
+
+## Example: Proportional Sizing
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .container {
+    display: flex;
+    gap: 10px;
+    background-color: #eee;
+    padding: 10px;
+  }
+
+  .box1 {
+    flex: 1 1 100px; /* grows equally, shrinks equally, starts at 100px */
+    background-color: #add8e6;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .box2 {
+    flex: 2 1 100px; /* grows 2x faster than .box1 */
+    background-color: #90ee90;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .box3 {
+    flex: 1 2 100px; /* normal grow, shrinks faster (2) than others (1) */
+    background-color: #ffb6c1;
+    text-align: center;
+    padding: 20px;
+  }
+</style>
+<title>Flex Sizing Demo</title>
+</head>
+<body>
+  <h1>Flex Sizing Example</h1>
+
+  <div class="container">
+    <div class="box1">Box 1</div>
+    <div class="box2">Box 2</div>
+    <div class="box3">Box 3</div>
+  </div>
+</body>
+</html>
+```
+
+**Explanation**:
+- `.box2` has `flex-grow: 2`, so it gets double the leftover space compared to `.box1` or `.box3`.
+- `.box3` has `flex-shrink: 2`, so if space is lacking, it shrinks faster than `.box1`.
+
+## Diagram: Flex Sizing at Work
+```plaintext
+Container
++---------------------------------------------------------------------------+
+|            Extra Space Distributed Based on flex-grow                    |
+| [Box 1 flex:1] [Box 2 flex:2] [Box 3 flex:1]                             |
+|   smaller  <---- leftover ---->   bigger    <---- leftover ---->  smaller |
++---------------------------------------------------------------------------+
+```
+
+## Combining with Other Flex Properties
+1. **`flex-direction`**: Sizing logic applies along the main axis (horizontal if `row`, vertical if `column`).
+2. **`justify-content`**: Helps distribute leftover space after items finish their own sizing.
+3. **`align-items`** and `align-content`: Manages cross-axis alignment but doesn’t affect `flex-basis`.
+
+## Common Pitfalls
+1. **`flex-shrink: 0`** Overflows: If the container is too small, an item with shrink set to `0` may break the layout.
+2. **Overly Large `flex-basis`**: If `flex-basis` is bigger than the container, items can overflow.
+3. **Incorrect Unit Usage**: Combining `px` and `%` in ambiguous ways can cause unexpected results.
+
+
+## References & Recommended Resources
+1. [MDN Web Docs - Flex](https://developer.mozilla.org/en-US/docs/Web/CSS/flex)
+2. [CSS-Tricks - A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+3. [W3Schools - CSS Flexbox](https://www.w3schools.com/css/css3_flexbox.asp)
+4. [Can I Use - Flexbox](https://caniuse.com/flexbox)
